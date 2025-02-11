@@ -44,34 +44,39 @@ function User() {
       </div>
 
       {isDropdownOpen && (
-        <div className="absolute right-0 transition-shadow p-4 top-3 mt-10 w-40 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+        <div className="absolute right-0 top-12 w-48 p-2 bg-white border border-gray-300 rounded-lg shadow-xl z-50">
           <ul className="py-2 text-sm text-gray-700">
-            <Link to="/profile" className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+            <Link
+              to="/profile"
+              className="block px-4 py-2 hover:bg-gray-100 hover:text-blue-600 transition rounded-md"
+            >
               Profile
             </Link>
-            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+            <li className="block px-4 py-2 hover:bg-gray-100 hover:text-blue-600 transition rounded-md cursor-pointer">
               Settings
             </li>
             <Link
               to="/my"
-              className="px-2 py-2 hover:bg-gray-100 cursor-pointer"
+              className="block px-4 py-2 hover:bg-gray-100 hover:text-blue-600 transition rounded-md"
             >
               My Products
             </Link>
+            <div className="border-t border-gray-200 my-2"></div>
+
             {isAuthenticated ? (
               <button
-                className="px-4 py-2 mt-6 bg-red-500 rounded-md text-white hover:bg-gray-100 hover:text-black cursor-pointer"
+                className="w-full px-4 py-2 text-center bg-red-500 text-white font-medium rounded-md hover:bg-red-600 transition"
                 onClick={() => logout()}
               >
                 Logout
               </button>
             ) : (
-              <div className="flex flex-col gap-3 p-2">
-                <button className="px-4 py-2 bg-red-500 rounded-md text-white transition-all hover:bg-gray-100 hover:text-black cursor-pointer">
+              <div className="flex flex-col gap-2 px-2">
+                <button className="w-full px-4 py-2 bg-blue-500 text-white font-medium rounded-md hover:bg-blue-600 transition">
                   Signup
                 </button>
                 <button
-                  className="px-4 py-2 bg-red-500 rounded-md text-white transition-all hover:bg-gray-100 hover:text-black cursor-pointer"
+                  className="w-full px-4 py-2 bg-green-500 text-white font-medium rounded-md hover:bg-green-600 transition"
                   onClick={() => loginWithRedirect()}
                 >
                   Login
