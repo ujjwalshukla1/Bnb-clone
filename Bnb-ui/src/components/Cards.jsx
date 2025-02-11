@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function Cards({ prop }) {
   const navigate = useNavigate();
   const handleNavigate = () => {
-    navigate("/rooms", { state: { property: prop } }); 
+    navigate("/rooms", { state: { property: prop } });
   };
   console.log("prop", prop);
   return (
@@ -14,26 +14,38 @@ function Cards({ prop }) {
         className="p-4 cursor-pointer border rounded-lg shadow-md"
         onClick={() => handleNavigate()}
       >
-        <div className="carousel h-72 w-fit rounded-xl">
+        <div className="carousel h-auto w-fit rounded-xl">
           <div
             id="slide1"
             className="carousel-item w-full object-cover rounded-md"
           >
-            <img src={prop.image1} alt="Slide 1" />
+            <img
+              className="w-full h-40 object-cover rounded-md"
+              src={prop.image1}
+              alt="Slide 1"
+            />
           </div>
 
           <div
             id="slide2"
             className="carousel-item w-full object-cover rounded-md"
           >
-            <img src={prop.image2} alt="Slide 2" />
+            <img
+              className="w-full h-40 object-cover rounded-md"
+              src={prop.image2}
+              alt="Slide 2"
+            />
           </div>
 
           <div
             id="slide3"
             className="carousel-item w-full object-cover rounded-md"
           >
-            <img src={prop.image3} alt="Slide 3" />
+            <img
+              className="w-full h-40 object-cover rounded-md"
+              src={prop.image3}
+              alt="Slide 3"
+            />
           </div>
         </div>
 

@@ -56,7 +56,6 @@ export default function ResponsiveForm() {
     <>
       <Navbar />
       <div className="flex h-screen">
-        {/* Left Side - Image */}
         <div
           className="hidden md:block w-1/2 h-[100vh] bg-cover bg-center rounded-lg shadow-2xl opacity-90"
           style={{
@@ -73,126 +72,152 @@ export default function ResponsiveForm() {
             <h2 className="text-lg font-semibold text-center mb-3 text-gray-800">
               List Your Property
             </h2>
+            {isAuthenticated ? (
+              <div>
+                <div className="mb-2">
+                  <label className="block text-xs text-gray-700">
+                    Location
+                  </label>
+                  <input
+                    type="text"
+                    name="propertyLoc"
+                    value={formData.propertyLoc}
+                    onChange={handleChange}
+                    className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
+                    required
+                    disabled={!isAuthenticated}
+                  />
+                </div>
 
-            <div className="mb-2">
-              <label className="block text-xs text-gray-700">Location</label>
-              <input
-                type="text"
-                name="propertyLoc"
-                value={formData.propertyLoc}
-                onChange={handleChange}
-                className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
-                required
-              />
-            </div>
+                <div className="mb-2">
+                  <label className="block text-xs text-gray-700">
+                    Distance
+                  </label>
+                  <input
+                    type="text"
+                    name="distance"
+                    value={formData.distance}
+                    onChange={handleChange}
+                    className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
+                    required
+                    disabled={!isAuthenticated}
+                  />
+                </div>
 
-            <div className="mb-2">
-              <label className="block text-xs text-gray-700">Distance</label>
-              <input
-                type="text"
-                name="distance"
-                value={formData.distance}
-                onChange={handleChange}
-                className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
-                required
-              />
-            </div>
+                <div className="mb-2">
+                  <label className="block text-xs text-gray-700">
+                    Availability
+                  </label>
+                  <input
+                    type="text"
+                    name="availability"
+                    value={formData.availability}
+                    onChange={handleChange}
+                    className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
+                    required
+                    disabled={!isAuthenticated}
+                  />
+                </div>
 
-            <div className="mb-2">
-              <label className="block text-xs text-gray-700">
-                Availability
-              </label>
-              <input
-                type="text"
-                name="availability"
-                value={formData.availability}
-                onChange={handleChange}
-                className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
-                required
-              />
-            </div>
+                <div className="mb-2">
+                  <label className="block text-xs text-gray-700">
+                    Category
+                  </label>
+                  <select
+                    name="category"
+                    value={formData.category}
+                    onChange={handleChange}
+                    className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
+                    required
+                    disabled={!isAuthenticated}
+                  >
+                    <option value="">Choose a category</option>
+                    <option value="Farm">Farm</option>
+                    <option value="Icon">Icon</option>
+                    <option value="Castles">Castles</option>
+                    <option value="Mansions">Mansions</option>
+                    <option value="Bed & Breakfast">Bed & Breakfast</option>
+                    <option value="Nature">Nature</option>
+                    <option value="Pools">Pools</option>
+                    <option value="Beaches">Beaches</option>
+                    <option value="Mountains">Mountains</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Cycling">Cycling</option>
+                    <option value="Apartments">Apartments</option>
+                    <option value="Parties">Parties</option>
+                  </select>
+                </div>
 
-            <div className="mb-2">
-              <label className="block text-xs text-gray-700">Category</label>
-              <select
-                name="category"
-                value={formData.category}
-                onChange={handleChange}
-                className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
-                required
-              >
-                <option value="">Choose a category</option>
-                <option value="Farm">Farm</option>
-                <option value="Castles">Castles</option>
-                <option value="Mansions">Mansions</option>
-                <option value="Bed & Breakfast">Bed & Breakfast</option>
-                <option value="Nature">Nature</option>
-                <option value="Beaches">Beaches</option>
-                <option value="Mountains">Mountains</option>
-                <option value="Apartments">Apartments</option>
-              </select>
-            </div>
+                <div className="mb-2">
+                  <label className="block text-xs text-gray-700">Price</label>
+                  <input
+                    type="text"
+                    name="price"
+                    value={formData.price}
+                    onChange={handleChange}
+                    className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
+                    required
+                    disabled={!isAuthenticated}
+                  />
+                </div>
 
-            <div className="mb-2">
-              <label className="block text-xs text-gray-700">Price</label>
-              <input
-                type="text"
-                name="price"
-                value={formData.price}
-                onChange={handleChange}
-                className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
-                required
-              />
-            </div>
+                {isAuthenticated && (
+                  <div className="mb-2">
+                    <label className="block text-xs text-gray-700">
+                      User ID
+                    </label>
+                    <input
+                      type="text"
+                      name="userId"
+                      value={formData.userId}
+                      className="w-full px-2 py-1 border rounded-lg text-xs bg-gray-200 cursor-not-allowed"
+                      readOnly
+                    />
+                  </div>
+                )}
 
-            {isAuthenticated && (
-              <div className="mb-2">
-                <label className="block text-xs text-gray-700">User ID</label>
-                <input
-                  type="text"
-                  name="userId"
-                  value={formData.userId}
-                  className="w-full px-2 py-1 border rounded-lg text-xs bg-gray-200 cursor-not-allowed"
-                  readOnly
-                />
+                <div className="mb-2">
+                  <label className="block text-xs text-gray-700">Image 1</label>
+                  <input
+                    type="text"
+                    name="image1"
+                    value={formData.image1}
+                    onChange={handleChange}
+                    className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
+                    required
+                    disabled={!isAuthenticated}
+                  />
+                </div>
+
+                <div className="mb-2">
+                  <label className="block text-xs text-gray-700">Image 2</label>
+                  <input
+                    type="text"
+                    name="image2"
+                    value={formData.image2}
+                    onChange={handleChange}
+                    className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
+                    required
+                    disabled={!isAuthenticated}
+                  />
+                </div>
+
+                <div className="mb-2">
+                  <label className="block text-xs text-gray-700">Image 3</label>
+                  <input
+                    type="text"
+                    name="image3"
+                    value={formData.image3}
+                    onChange={handleChange}
+                    className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
+                    required
+                    disabled={!isAuthenticated}
+                  />
+                </div>
               </div>
+            ) : (
+              <p className="text-center p-6">Please log in to list you property</p>
             )}
-
-            <div className="mb-2">
-              <label className="block text-xs text-gray-700">Image 1</label>
-              <input
-                type="text"
-                name="image1"
-                value={formData.image1}
-                onChange={handleChange}
-                className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
-                required
-              />
-            </div>
-
-            <div className="mb-2">
-              <label className="block text-xs text-gray-700">Image 2</label>
-              <input
-                type="text"
-                name="image2"
-                value={formData.image2}
-                onChange={handleChange}
-                className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
-                required
-              />
-            </div>
-
-            <div className="mb-2">
-              <label className="block text-xs text-gray-700">Image 3</label>
-              <input
-                type="text"
-                name="image3"
-                value={formData.image3}
-                onChange={handleChange}
-                className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
-                required
-              />
-            </div>
 
             <button
               type="submit"

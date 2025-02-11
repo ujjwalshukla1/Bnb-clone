@@ -6,15 +6,15 @@ import Footer from "../components/Footer";
 import axios from "axios";
 
 function Home() {
-  const [property, setProperty] = useState([]);
+  const [properties, setProperties] = useState([]); 
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const GetProperty = async () => {
     try {
       const response = await axios.get("http://localhost:8000/properties/all");
-      setProperty(response.data.properties);
-      console.log(response.data.properties);
+      setProperties(response.data.properties);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching properties:", error);
     }
   };
 
@@ -22,21 +22,26 @@ function Home() {
     GetProperty();
   }, []);
 
+  const filteredProperties = selectedCategory
+    ? properties.filter((prop) => prop.category === selectedCategory)
+    : properties;
+
   return (
     <>
       <Navbar />
-      <Property />
-      <h1>{property.price}</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
-        {property.length > 0 ? (
-          property.map((prop) => <Cards key={prop._id} prop={prop} />)
+      <Property setSelectedCategory={setSelectedCategory} />
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+        {filteredProperties.length > 0 ? (
+          filteredProperties.map((prop) => <Cards key={prop._id} prop={prop} />)
         ) : (
-          <p>No properties listed</p>
+          <p className="col-span-full text-center text-gray-500">
+            No properties listed in this category
+          </p>
         )}
       </div>
-      <div>
-        <Footer />
-      </div>
+
+      <Footer />
     </>
   );
 }
