@@ -11,7 +11,7 @@ function Home() {
 
   const GetProperty = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/properties/all");
+      const response = await axios.get("https://bnb-clone-1.onrender.com/properties/all");
       setProperties(response.data.properties);
     } catch (error) {
       console.error("Error fetching properties:", error);

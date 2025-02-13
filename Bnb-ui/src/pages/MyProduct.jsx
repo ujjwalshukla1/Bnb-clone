@@ -16,7 +16,7 @@ function MyProduct() {
 
   const GetProperty = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/properties/all");
+      const response = await axios.get("https://bnb-clone-1.onrender.com/properties/all");
       setProperty(response.data.properties);
     } catch (error) {
       console.error("Error fetching properties:", error);
@@ -36,7 +36,7 @@ function MyProduct() {
 
     try {
       const res =  await axios.delete(
-        `http://localhost:8000/properties/delete/${id}`
+        `https://bnb-clone-1.onrender.com/properties/delete/${id}`
       );
       setProperty((prevProperties) =>
         prevProperties.filter((prop) => prop._id !== id)
@@ -69,7 +69,7 @@ function MyProduct() {
                   <h3 className="text-lg font-semibold mt-2">
                     {prop.propertyLoc}
                   </h3>
-                  <p className="text-gray-600">Price: ${prop.price}</p>
+                  <p className="text-gray-600">Price: {prop.price}</p>
                   <p className="text-gray-500 text-sm">
                     Category: {prop.category}
                   </p>

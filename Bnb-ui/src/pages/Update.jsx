@@ -24,7 +24,7 @@ function Update() {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:8000/properties/update/${id}`,
+        `https://bnb-clone-1.onrender.com/properties/update/${id}`,
         update
       );
       console.log(response.data);

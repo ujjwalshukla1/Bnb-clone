@@ -39,7 +39,7 @@ export default function ResponsiveForm() {
     }
     try {
       const response = await axios.post(
-        "http://localhost:8000/properties/create",
+        "https://bnb-clone-1.onrender.com/properties/create",
         formData
       );
       if (response.status === 200) {

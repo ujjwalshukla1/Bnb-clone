@@ -27,7 +27,7 @@ function Rooms() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8000/user/book", booking);
+      const res = await axios.post("https://bnb-clone-1.onrender.com/user/book", booking);
       console.log(res.data);
       if (res.status === 200) {
         toast.success("Booking done, Enjoy!");
