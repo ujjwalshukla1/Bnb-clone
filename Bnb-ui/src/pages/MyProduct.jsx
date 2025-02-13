@@ -3,14 +3,15 @@ import Navbar from "../components/Navbar";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function MyProduct() {
   const { user, isAuthenticated } = useAuth0();
   const [property, setProperty] = useState([]);
   const navigate = useNavigate();
 
-  const handleClick = (id) => {
-    navigate(`/update/${id}`, { state: { property } });
+  const handleClick = (prop) => {
+    navigate(`/update/${prop._id}`, { state: { property: prop } });
   };
 
   const GetProperty = async () => {
@@ -26,6 +27,28 @@ function MyProduct() {
     GetProperty();
   }, []);
 
+  const DeleteProperty = async (id) => {
+    console.log(id)
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this listing?"
+    );
+    if (!confirmDelete) return;
+
+    try {
+      const res =  await axios.delete(
+        `http://localhost:8000/properties/delete/${id}`
+      );
+      setProperty((prevProperties) =>
+        prevProperties.filter((prop) => prop._id !== id)
+      );
+      if (res.status === 200) {
+        toast.success("Property deleted successfully");
+      }
+      console.log("Property deleted successfully.");
+    } catch (error) {
+      console.log("Error deleting property:", error);
+    }
+  };
   return (
     <>
       <Navbar />
@@ -52,11 +75,14 @@ function MyProduct() {
                   </p>
                   <button
                     className="btn btn-outline hover:bg-red-500 hover:border-none hover:text-white mt-3 px-6"
-                    onClick={() => handleClick(prop._id)}
+                    onClick={() => handleClick(prop)}
                   >
                     Edit
                   </button>
-                  <button className="btn btn-outline ml-3 hover:bg-red-500 hover:border-none hover:text-white mt-3 px-6">
+                  <button
+                    onClick={() => DeleteProperty(prop._id)}
+                    className="btn btn-outline ml-3 hover:bg-red-500 hover:border-none hover:text-white mt-3 px-6"
+                  >
                     Delete
                   </button>
                 </div>

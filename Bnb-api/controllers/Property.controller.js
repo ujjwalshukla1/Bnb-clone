@@ -161,3 +161,25 @@ export const UpdateProperty = async (req, res) => {
       .json({ success: true, message: "internal server error" });
   }
 };
+
+export const DeleteProperty = async (req, res) => {
+  try {
+    const product = await propertyModel.findById(req.params.id);
+    if (!product) {
+      return res
+        .status(303)
+        .json({ success: false, message: "Product not found" });
+    }
+    const deleteProduct = await propertyModel.findByIdAndDelete(req.params.id);
+    return res.status(200).json({
+      success: true,
+      message: "Product deleted successfully",
+      product: deleteProduct,
+    });
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal server error" });
+  }
+};
