@@ -8,6 +8,7 @@ import MyProduct from "./pages/MyProduct";
 import Profile from "./pages/Profile";
 import Rooms from "./pages/Rooms";
 import Update from "./pages/Update";
+import SearchResults from "./pages/SearchResults";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/update/:id" element={<Update />} />
+        <Route path="/Search" element={<SearchResults />} />
       </Routes>
     </>
   );

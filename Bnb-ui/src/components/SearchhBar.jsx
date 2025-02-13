@@ -1,15 +1,24 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchBox() {
   const [destination, setDestination] = useState("");
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [people, setPeople] = useState(1);
+  const navigate = useNavigate(); 
 
   const handleSearch = () => {
-    console.log({ destination, checkIn, checkOut, people });
-    // Add your search logic here
+    if (!destination || !checkIn || !checkOut) {
+      alert("Please fill in all fields before searching!");
+      return;
+    }
+
+    
+    navigate(
+      `/search?destination=${destination}&checkIn=${checkIn}&checkOut=${checkOut}&people=${people}`
+    );
   };
 
   return (
@@ -34,7 +43,6 @@ export default function SearchBox() {
           </label>
           <input
             type="date"
-            placeholder="Add date"
             value={checkIn}
             onChange={(e) => setCheckIn(e.target.value)}
             className="input input-bordered rounded-full w-full"
@@ -47,7 +55,6 @@ export default function SearchBox() {
           </label>
           <input
             type="date"
-            placeholder="Add date"
             value={checkOut}
             onChange={(e) => setCheckOut(e.target.value)}
             className="input input-bordered rounded-full w-full"
@@ -74,7 +81,7 @@ export default function SearchBox() {
 
       <div className="flex mt-4">
         <button
-          className="btn btn-error text-white  rounded-full md:w-auto"
+          className="btn btn-error text-white rounded-full md:w-auto"
           onClick={handleSearch}
         >
           <FaSearch />
