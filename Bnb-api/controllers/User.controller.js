@@ -2,7 +2,7 @@ import User from "../models/User.model.js";
 
 export const UserBooking = async (req, res) => {
   try {
-    const { Name, PropertyName, Email, CheckIn, CheckOut, NoGuest, Price } =
+    const { Name, PropertyName, Email, CheckIn, CheckOut} =
       req.body;
     if (
       !Name ||
@@ -28,8 +28,6 @@ export const UserBooking = async (req, res) => {
       Email,
       CheckIn,
       CheckOut,
-      NoGuest,
-      Price,
       PropertyName,
     });
 
