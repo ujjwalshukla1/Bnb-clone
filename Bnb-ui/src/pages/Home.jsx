@@ -31,11 +31,11 @@ function Home() {
       <Navbar />
       <Property setSelectedCategory={setSelectedCategory} />
 
-      <div className="grid grid-col-1 sm:grid-col-2 md:grid-col-3 lg:grid-col-4 gap-4 p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
         {filteredProperties.length > 0 ? (
           filteredProperties.map((prop) => <Cards key={prop._id} prop={prop} />)
         ) : (
-          <p className="col-span-full text-center text-gray-500">
+          <p className="cols-span-full text-center text-gray-500">
             No properties listed in this category
           </p>
         )}
