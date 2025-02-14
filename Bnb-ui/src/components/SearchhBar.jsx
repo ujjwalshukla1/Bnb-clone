@@ -7,7 +7,7 @@ export default function SearchBox() {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [people, setPeople] = useState(1);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleSearch = () => {
     if (!destination || !checkIn || !checkOut) {
@@ -15,17 +15,18 @@ export default function SearchBox() {
       return;
     }
 
-    
     navigate(
       `/search?destination=${destination}&checkIn=${checkIn}&checkOut=${checkOut}&people=${people}`
     );
   };
 
   return (
-    <div className="max-w-3xl bg-white shadow-xl p-4 rounded-full gap-3 border-2 border-slate-200 px-10">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
-        <div className="flex flex-col">
-          <label className="text-xs pl-4 font-medium text-gray-700 mb-1">
+    <div className="w-full max-w-4xl bg-white shadow-xl p-4 rounded-lg border-2 border-slate-200 md:rounded-full md:px-6">
+      {/* Flexbox for Desktop, Stack on Mobile */}
+      <div className="flex items-center flex-col md:flex-row md:items-center gap-3">
+        {/* Destination */}
+        <div className="flex-1">
+          <label className="text-xs font-medium text-gray-700 mb-1 block">
             Destination
           </label>
           <input
@@ -37,8 +38,9 @@ export default function SearchBox() {
           />
         </div>
 
-        <div className="flex flex-col">
-          <label className="text-xs pl-4 font-medium text-gray-700 mb-1">
+        {/* Check-In */}
+        <div className="flex-1">
+          <label className="text-xs font-medium text-gray-700 mb-1 block">
             Check-In
           </label>
           <input
@@ -49,8 +51,9 @@ export default function SearchBox() {
           />
         </div>
 
-        <div className="flex flex-col">
-          <label className="text-xs pl-4 font-medium text-gray-700 mb-1">
+        {/* Check-Out */}
+        <div className="flex-1">
+          <label className="text-xs font-medium text-gray-700 mb-1 block">
             Check-Out
           </label>
           <input
@@ -61,8 +64,9 @@ export default function SearchBox() {
           />
         </div>
 
-        <div className="flex flex-col">
-          <label className="text-xs pl-4 font-medium text-gray-700 mb-1">
+        {/* No. of People */}
+        <div className="flex-1">
+          <label className="text-xs font-medium text-gray-700 mb-1 block">
             No. of People
           </label>
           <select
@@ -77,15 +81,16 @@ export default function SearchBox() {
             ))}
           </select>
         </div>
-      </div>
 
-      <div className="flex mt-4">
-        <button
-          className="btn btn-error text-white rounded-full md:w-auto"
-          onClick={handleSearch}
-        >
-          <FaSearch />
-        </button>
+        {/* Search Button */}
+        <div className="md:mt-3 flex items-center mt-2 md:justify-center">
+          <button
+            className="btn btn-error text-white rounded-full h-full "
+            onClick={handleSearch}
+          >
+            <FaSearch />
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -31,7 +31,7 @@ function User() {
       ref={dropdownRef}
       className="relative border-2 flex flex-row gap-5 border-slate-300 p-2 px-5 rounded-badge"
     >
-      <div className="cursor-pointer" onClick={toggleDropdown}>
+      <div className=" mt-2 cursor-pointer" onClick={toggleDropdown}>
         <RxHamburgerMenu />
       </div>
 
