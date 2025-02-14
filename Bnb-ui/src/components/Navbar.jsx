@@ -49,7 +49,7 @@ function Navbar() {
 
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
-        <div className="absolute top-16 left-0 w-full bg-white shadow-lg p-4 flex flex-col gap-4 md:hidden">
+        <div className="absolute z-10 top-16 left-0 w-full bg-white shadow-lg p-4 flex flex-col gap-4 md:hidden">
           <SearchBox />
           <User />
         </div>
