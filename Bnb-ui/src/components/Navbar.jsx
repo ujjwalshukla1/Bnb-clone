@@ -24,6 +24,17 @@ function Navbar() {
         <SearchBox />
       </div>
 
+
+      {!isListingPage && (
+        <Link
+          to="/Listing"
+          className="flex border-2 items-center gap-2 text-sm transition-transform duration-200 border-slate-300 p-2 px-3 rounded-lg hover:bg-red-500 hover:border-0 hover:text-white hover:scale-105"
+        >
+          List your property
+        </Link>
+      )}
+
+
       {/* Mobile Toggle Button */}
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -32,16 +43,7 @@ function Navbar() {
         <FaBars />
       </button>
 
-      {/* Listing Button (Always visible) */}
-      {!isListingPage && (
-        <Link
-          to="/Listing"
-          className="hidden md:flex border-2 items-center gap-2 text-sm transition-transform duration-200 border-slate-300 p-2 px-3 rounded-lg hover:bg-red-500 hover:border-0 hover:text-white hover:scale-105 md:px-5"
-        >
-          List your property
-        </Link>
-      )}
-
+      
       {/* Desktop User Menu */}
       <div className="hidden md:block">
         <User />

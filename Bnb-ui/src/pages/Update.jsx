@@ -44,15 +44,15 @@ function Update() {
   return (
     <>
       <Navbar />
-      <div className="flex flex-row">
+      <div className="flex flex-col md:flex-row">
         <img
-          className="h-screen shadow-xl w-2/4 rounded-md"
+          className="h-64 md:h-screen shadow-xl w-full md:w-2/4 rounded-md object-cover"
           src="https://i.pinimg.com/736x/51/f5/7c/51f57c1f8405780a6340ef91bc085738.jpg"
         />
-        <div className="w-screen flex items-center justify-center bg-gray-100 p-6 ">
+        <div className="w-full md:w-screen flex items-center justify-center bg-gray-100 p-4 md:p-6">
           <form
             onSubmit={handleSubmit}
-            className="bg-white p-6 mt-5 ml-10 rounded-lg shadow-lg w-full max-w-sm max-h-[90vh] overflow-auto"
+            className="bg-white p-4 md:p-6 mt-5 rounded-lg shadow-lg w-full max-w-sm max-h-[90vh] overflow-auto"
           >
             <h2 className="text-lg font-semibold text-center mb-3 text-gray-800">
               Update Your Property
@@ -70,7 +70,6 @@ function Update() {
                     onChange={handleChange}
                     className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
                     required
-                    disabled={!isAuthenticated}
                   />
                 </div>
 
@@ -85,7 +84,6 @@ function Update() {
                     onChange={handleChange}
                     className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
                     required
-                    disabled={!isAuthenticated}
                   />
                 </div>
 
@@ -100,7 +98,6 @@ function Update() {
                     onChange={handleChange}
                     className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
                     required
-                    disabled={!isAuthenticated}
                   />
                 </div>
 
@@ -114,7 +111,6 @@ function Update() {
                     onChange={handleChange}
                     className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
                     required
-                    disabled={!isAuthenticated}
                   >
                     <option value="">Choose a category</option>
                     <option value="Farm">Farm</option>
@@ -142,27 +138,13 @@ function Update() {
                     onChange={handleChange}
                     className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
                     required
-                    disabled={!isAuthenticated}
                   />
                 </div>
 
-                {isAuthenticated && (
-                  <div className="mb-2">
-                    <label className="block text-xs text-gray-700">
-                      User ID
-                    </label>
-                    <input
-                      type="text"
-                      name="userId"
-                      value={update.userId}
-                      className="w-full px-2 py-1 border rounded-lg text-xs bg-gray-200 cursor-not-allowed"
-                      readOnly
-                    />
-                  </div>
-                )}
-
                 <div className="mb-2">
-                  <label className="block text-xs text-gray-700">Image 1</label>
+                  <label className="block text-xs text-gray-700">
+                    Image URLs
+                  </label>
                   <input
                     type="text"
                     name="image1"
@@ -170,39 +152,28 @@ function Update() {
                     onChange={handleChange}
                     className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
                     required
-                    disabled={!isAuthenticated}
                   />
-                </div>
-
-                <div className="mb-2">
-                  <label className="block text-xs text-gray-700">Image 2</label>
                   <input
                     type="text"
                     name="image2"
                     value={update.image2}
                     onChange={handleChange}
-                    className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
+                    className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300 mt-2"
                     required
-                    disabled={!isAuthenticated}
                   />
-                </div>
-
-                <div className="mb-2">
-                  <label className="block text-xs text-gray-700">Image 3</label>
                   <input
                     type="text"
                     name="image3"
                     value={update.image3}
                     onChange={handleChange}
-                    className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300"
+                    className="w-full px-2 py-1 border rounded-lg text-xs focus:ring focus:ring-blue-300 mt-2"
                     required
-                    disabled={!isAuthenticated}
                   />
                 </div>
               </div>
             ) : (
               <p className="text-center p-6">
-                Please log in to list you property
+                Please log in to update your property
               </p>
             )}
 
