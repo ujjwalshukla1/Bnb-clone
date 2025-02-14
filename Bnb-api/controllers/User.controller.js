@@ -9,9 +9,7 @@ export const UserBooking = async (req, res) => {
       !PropertyName ||
       !Email ||
       !CheckIn ||
-      !CheckOut ||
-      !NoGuest ||
-      !Price
+      !CheckOut
     ) {
       return res
         .status(303)
