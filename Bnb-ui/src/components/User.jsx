@@ -24,7 +24,7 @@ function User() {
     };
   }, []);
 
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   return (
     <div
@@ -38,7 +38,10 @@ function User() {
       <div className="cursor-pointer">
         <img
           style={{ width: "30px", height: "30px" }}
-          src="https://cdn-icons-png.flaticon.com/512/9187/9187604.png"
+          src={
+            user?.picture ||
+            "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="
+          }
           alt="User Icon"
         />
       </div>
